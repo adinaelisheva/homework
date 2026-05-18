@@ -77,7 +77,7 @@
     </div>
   </form>
   <div class="hidden invalid">Not all fields filled out!</div>
-  <div class="hidden valid">New course created!</div>
-  <button class="additem">Create new course</button>
+  <div class="hidden valid">New item added</div>
+  <button class="additem">Add new item</button>
   </body>
 </html>
