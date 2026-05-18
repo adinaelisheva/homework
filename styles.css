@@ -1,0 +1,107 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+  font-family: 'Lora', sans-serif;
+}
+
+.itemslist {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 0 10px;
+  margin: 0 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.item.soon {
+  color: #d33e60;
+}
+
+.item:hover {
+  background-color: #eee;
+}
+
+.item.done:not(.checkmark) {
+  color: #999;
+  font-style: italic;
+}
+
+.name {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.duedate {
+  width: 85px;
+  flex-shrink: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  background: #f8f8f8;
+  border: 1px solid #aaa;
+  border-radius: 15px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.checkmark {
+  margin: auto 16px;
+  color: #26ba26;
+  background: #efefef;
+  padding: 3px 6px;
+  border-radius: 20px;
+}
+
+.formrow {
+  margin: 15px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.formrow .label {
+  width: 66px;
+}
+
+input {
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #777;
+}
+
+input[type="checkbox"] {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.invalid, .valid {
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.valid {
+  color: #006e00;
+}
+
+.invalid {
+  color: #9a0000;
+}
