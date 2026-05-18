@@ -19,10 +19,13 @@ function addItem() {
   let qStr = `./additem.php?name=${name}&subject=${subject}`;
   if (!daily && duedate) {
     // If the daily box is checked it overrides whatever the due date field is
-    qStr += `&duedate=${duedate}`;
+    qStr += `&due=${duedate}`;
   }
   fetch(qStr);
   document.querySelector('.valid').classList.remove('hidden');
+  window.setTimeout(() => {
+    window.location.reload();
+  }, 1000);
 }
 
 function addDatalistOption(text) {
