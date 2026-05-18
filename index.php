@@ -5,11 +5,14 @@
     <script src="script.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../shared/appswidget/appswidget.js"></script>
+    <link href="../shared/appswidget/appswidget.css" rel="stylesheet">
 
     <title>Homework tracking</title>
   </head>
   
   <body>
+    <div id="appsWidgetButton" title="Tracking apps shortcut"></div>
     <div class="content">
       <?php
         include("common.php"); 
