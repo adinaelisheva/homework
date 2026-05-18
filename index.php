@@ -24,7 +24,7 @@
 
         while($row = mysqli_fetch_array($res)){
           $subject = $row['subject'];
-          $query = "SELECT * FROM `items` WHERE (subject = '$subject') AND ((done IS NULL) OR (daily = 1 AND done < '$datestr'));";
+          $query = "SELECT * FROM `items` WHERE (subject = '$subject') AND ((done IS NULL) OR (daily = 1 AND done < '$datestr')) ORDER BY due asc;";
           $res2 = mysqli_query($con, $query) or die(mysqli_error($con));
           if(!$res2) {
             exit();
