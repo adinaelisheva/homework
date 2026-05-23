@@ -49,15 +49,16 @@
                 } else {
                   $duedate = strtotime($due);
                 }
-                $soon = $duedate - time() < 2*60*60*24; // within 2 days
+                $duesoon = $duedate - time() < 2*60*60*24; // within 2 days
+                $duenow = $duedate - time() <= 0; // due today or overdue
                 $due = date("D n/j", $duedate);
                 $id = $row2['id'];
               ?>
-                <div class="item <?=$soon? 'soon' : ''?>">
+                <div class="item <?=$duenow ? 'now' : ($duesoon? 'soon' : '') ?>">
                   <div class="name"><?=$name?></div>
-                  <div class="duedate" nowdate="<?=$nowdate?>"><?=$due?></div>
+                  <div class="duedate" duedate="<?=$due?>" nowdate="<?=$nowdate?>"><?=$due?></div>
                   <button class="done" id="<?=$id?>">Done</button>
-                  <div class="checkmark hidden">✓</div>
+                  <div class="checkmark hidden" id="<?=$id?>">✓</div>
                 </div>
                 <?php
               }
@@ -70,11 +71,13 @@
                 $name = $row2['name'];
                 $donedate = strtotime($row2['done']);
                 $done = date("D n/j", $donedate);
+                $id = $row2['id'];
               ?>
                 <div class="item done">
                   <div class="name"><?=$name?></div>
-                  <div class="duedate"><?=$done?></div>
-                  <div class="checkmark">✓</div>
+                  <div class="duedate" nowdate="<?=$nowdate?>"><?=$done?></div>
+                  <button class="done hidden" id="<?=$id?>">Done</button>
+                  <div class="checkmark" id="<?=$id?>">✓</div>
                 </div>
                 <?php
               }

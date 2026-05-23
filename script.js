@@ -8,6 +8,20 @@ function markDone(button) {
   button.parentElement.setAttribute('style', 'order: 100;');
 }
 
+function undoDone(checkmark) {
+  fetch(`./undodone.php?id=${checkmark.id}`);
+  checkmark.classList.add('hidden');
+  checkmark.parentElement.classList.remove('done');
+  checkmark.parentElement.querySelector('button').classList.remove('hidden');
+  const dateDiv = checkmark.parentElement.querySelector('.duedate');
+  if (dateDiv.getAttribute('duedate')) {
+    dateDiv.innerText = dateDiv.getAttribute('duedate');
+  } else {
+    dateDiv.innerText = `${dateDiv.getAttribute('nowdate')}?`;
+  }
+  checkmark.parentElement.setAttribute('style', '');
+}
+
 function addItem() {
   const name = document.querySelector('#name').value;
   const subject = document.querySelector('#subject').value;
@@ -44,6 +58,11 @@ function setup() {
   for (const button of document.querySelectorAll('button.done')) {
     button.addEventListener('click', () => {
       markDone(button);
+    });
+  }
+  for (const checkmark of document.querySelectorAll('.checkmark')) {
+    checkmark.addEventListener('click', () => {
+      undoDone(checkmark);
     });
   }
   document.querySelector('button.additem').addEventListener('click', () => {
