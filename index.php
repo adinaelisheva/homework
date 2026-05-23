@@ -24,6 +24,10 @@
 
         $date = time();
         $datestr = date("Y-m-d 00:00:00.000", $date);
+        $nowdate = date("D n/j", $date);
+      ?>
+      <h2>Homework for <?=$nowdate?></h2>
+      <?php
 
         while($row = mysqli_fetch_array($res)){
           $subject = $row['subject'];
@@ -51,9 +55,26 @@
               ?>
                 <div class="item <?=$soon? 'soon' : ''?>">
                   <div class="name"><?=$name?></div>
-                  <div class="duedate"><?=$due?></div>
+                  <div class="duedate" nowdate="<?=$nowdate?>"><?=$due?></div>
                   <button class="done" id="<?=$id?>">Done</button>
                   <div class="checkmark hidden">✓</div>
+                </div>
+                <?php
+              }
+              $query2 = "SELECT * FROM `items` WHERE (subject = '$subject') AND (done >= '$datestr') ORDER BY due asc;";
+              $res2 = mysqli_query($con, $query2) or die(mysqli_error($con));
+              if(!$res2) {
+                exit();
+              }
+              while($row2 = mysqli_fetch_array($res2)){
+                $name = $row2['name'];
+                $donedate = strtotime($row2['done']);
+                $done = date("D n/j", $donedate);
+              ?>
+                <div class="item done">
+                  <div class="name"><?=$name?></div>
+                  <div class="duedate"><?=$done?></div>
+                  <div class="checkmark">✓</div>
                 </div>
                 <?php
               }

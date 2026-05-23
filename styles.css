@@ -7,7 +7,7 @@ body {
   margin: 0 auto;
 }
 
-h3 {
+h2, h3 {
   font-family: 'Lora', sans-serif;
 }
 
@@ -16,6 +16,8 @@ h3 {
   border-radius: 15px;
   padding: 0 10px;
   margin: 0 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .item {
@@ -32,7 +34,7 @@ h3 {
   color: #d33e60;
 }
 
-.item:hover {
+.item:not(.done):hover {
   background-color: #eee;
 }
 

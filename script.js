@@ -3,6 +3,9 @@ function markDone(button) {
   button.classList.add('hidden');
   button.parentElement.classList.add('done');
   button.parentElement.querySelector('.checkmark').classList.remove('hidden');
+  const dateDiv = button.parentElement.querySelector('.duedate');
+  dateDiv.innerText = dateDiv.getAttribute('nowdate');
+  button.parentElement.setAttribute('style', 'order: 100;');
 }
 
 function addItem() {
